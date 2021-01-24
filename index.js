@@ -1,9 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express(); 
+const banksRoute = require('./routes/banks');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3000
+
+//middlewares
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+
+//routes
+
+app.use('/api/banks',banksRoute);
+
 
 //connect to mongodb atlas
 
